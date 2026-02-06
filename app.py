@@ -10,24 +10,24 @@ vazao_recalque = st.number_input("Vazão do Recalque (m³/h)", min_value=0.0, va
 
 # --- Configuração das boias ---
 with st.expander("Reservatório Água Bruta"):
-    boia_poco_on = st.number_input("Boia do Poço - ARME (m³)", min_value=0.0, value=10.0, step=0.5)
-    boia_poco_off = st.number_input("Boia do Poço - DESARME (m³)", min_value=0.0, value=13.0, step=0.5)
-    boia_trat_on_bruta = st.number_input("Boia do Tratamento - ARME (m³)", min_value=0.0, value=6.0, step=0.5)
-    boia_trat_off_bruta = st.number_input("Boia do Tratamento - DESARME (m³)", min_value=0.0, value=5.0, step=0.5)
+    boia_poco_on = st.number_input("Poço (Água Bruta) - ARME (m³)", value=10.0, step=0.5)
+    boia_poco_off = st.number_input("Poço (Água Bruta) - DESARME (m³)", value=13.0, step=0.5)
+    boia_trat_on_bruta = st.number_input("Tratamento (Água Bruta) - ARME (m³)", value=6.0, step=0.5)
+    boia_trat_off_bruta = st.number_input("Tratamento (Água Bruta) - DESARME (m³)", value=5.0, step=0.5)
 
 with st.expander("Reservatório Água Tratada"):
-    boia_trat_on_tratada = st.number_input("Boia do Tratamento - ARME (m³)", min_value=0.0, value=6.0, step=0.5)
-    boia_trat_off_tratada = st.number_input("Boia do Tratamento - DESARME (m³)", min_value=0.0, value=5.0, step=0.5)
-    boia_recalque_on = st.number_input("Boia do Recalque - ARME (m³)", min_value=0.0, value=10.0, step=0.5)
-    boia_recalque_off = st.number_input("Boia do Recalque - DESARME (m³)", min_value=0.0, value=5.0, step=0.5)
+    boia_trat_on_tratada = st.number_input("Tratamento (Água Tratada) - ARME (m³)", value=6.0, step=0.5)
+    boia_trat_off_tratada = st.number_input("Tratamento (Água Tratada) - DESARME (m³)", value=5.0, step=0.5)
+    boia_recalque_on = st.number_input("Recalque (Água Tratada) - ARME (m³)", value=10.0, step=0.5)
+    boia_recalque_off = st.number_input("Recalque (Água Tratada) - DESARME (m³)", value=5.0, step=0.5)
 
 with st.expander("Reservatório Principal"):
-    boia_principal_on = st.number_input("Boia do Recalque - ARME (m³)", min_value=0.0, value=90.0, step=0.5)
-    boia_principal_off = st.number_input("Boia do Recalque - DESARME (m³)", min_value=0.0, value=100.0, step=0.5)
+    boia_principal_on = st.number_input("Recalque (Principal) - ARME (m³)", value=90.0, step=0.5)
+    boia_principal_off = st.number_input("Recalque (Principal) - DESARME (m³)", value=100.0, step=0.5)
 
 with st.expander("Reservatório C (Retrolavagem)"):
-    boia_C_on = st.number_input("Boia C - ARME (m³)", min_value=0.0, value=5.0, step=0.5)
-    boia_C_off = st.number_input("Boia C - DESARME (m³)", min_value=0.0, value=15.0, step=0.5)
+    boia_C_on = st.number_input("Retrolavagem - ARME (m³)", value=5.0, step=0.5)
+    boia_C_off = st.number_input("Retrolavagem - DESARME (m³)", value=15.0, step=0.5)
 
 # --- Função de consumo dinâmico ---
 def consumo_populacao(hora):
@@ -131,7 +131,7 @@ ax.set_title("Simulação Integrada - Consumo Dinamico")
 
 plt.subplots_adjust(bottom=0.25)
 
-# Texto com contadores (corrigido)
+# Texto com contadores
 texto = (
     f"Partidas ({horas}h): Poço={partidas_poco}, Recalque={partidas_recalque}, Tratamento={partidas_tratamento}\n"
     f"Horas ligadas ({horas}h): Poço={horas_poco}, Recalque={horas_recalque}, Tratamento={horas_tratamento}"
