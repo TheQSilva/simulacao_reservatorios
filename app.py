@@ -131,5 +131,11 @@ ax.set_title("Simulação Integrada - Consumo Dinamico")
 
 plt.subplots_adjust(bottom=0.25)
 
+# Texto com contadores (corrigido)
 texto = (
-    f
+    f"Partidas ({horas}h): Poço={partidas_poco}, Recalque={partidas_recalque}, Tratamento={partidas_tratamento}\n"
+    f"Horas ligadas ({horas}h): Poço={horas_poco}, Recalque={horas_recalque}, Tratamento={horas_tratamento}"
+)
+fig.text(0.5, 0.12, texto, ha="center", fontsize=10, bbox=dict(facecolor='white', alpha=0.7))
+
+st.pyplot(fig)
