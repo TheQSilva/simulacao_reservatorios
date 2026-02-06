@@ -1,13 +1,12 @@
 import streamlit as st
 import matplotlib.pyplot as plt
 
-# --- Parâmetros ---
+# --- Parâmetros ajustáveis ---
 horas = st.slider("Duração da simulação (h)", 24, 168, 72)
 
-# Vazões fixas
-vazao_poco = 10.0
-vazao_trat = 5.5
-vazao_recalque = 7.5
+vazao_poco = st.number_input("Vazão do Poço (m³/h)", min_value=0.0, value=10.0, step=0.5)
+vazao_trat = st.number_input("Vazão do Tratamento (m³/h)", min_value=0.0, value=5.5, step=0.5)
+vazao_recalque = st.number_input("Vazão do Recalque (m³/h)", min_value=0.0, value=7.5, step=0.5)
 
 # Função de consumo dinâmico
 def consumo_populacao(hora):
@@ -117,8 +116,8 @@ ax.set_xlabel("Tempo (horas)")
 ax.set_ylabel("Volume (m³)")
 ax.set_title("Simulação Integrada - Consumo Dinamico")
 
-texto = (f"Partidas (72h): Poço={partidas_poco}, Recalque={partidas_recalque}, Tratamento={partidas_tratamento}\n"
-         f"Horas ligadas (72h): Poço={horas_poco}, Recalque={horas_recalque}, Tratamento={horas_tratamento}")
+texto = (f"Partidas ({horas}h): Poço={partidas_poco}, Recalque={partidas_recalque}, Tratamento={partidas_tratamento}\n"
+         f"Horas ligadas ({horas}h): Poço={horas_poco}, Recalque={horas_recalque}, Tratamento={horas_tratamento}")
 fig.text(0.5, 0.02, texto, ha="center", fontsize=10, bbox=dict(facecolor='white', alpha=0.7))
 
 st.pyplot(fig)
